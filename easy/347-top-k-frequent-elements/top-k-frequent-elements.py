@@ -1,16 +1,15 @@
-class Solution(object):
-    def topKFrequent(self, nums, k):
-        size=len(nums)
-        temp=[]
-        for num in set(nums):
-            temp.append((nums.count(num),num))
-        temp.sort(reverse=True)
-        result=[]
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        freq = {} 
+        for num in nums:
+            freq[num] = freq.get(num, 0) + 1
+
+
+        sorted_items = sorted(freq.items(), key=lambda x: x[1],      reverse=True)
+
+
+        result = []
         for i in range(k):
-            result.append(temp[i][1])
+            result.append(sorted_items[i][0])
+
         return result
-             
-
-
-             
-         
